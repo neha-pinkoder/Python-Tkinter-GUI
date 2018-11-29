@@ -103,9 +103,44 @@ submitFrame.pack()
 submitLabelsFrame = Frame(submitFrame)
 submitLabelsFrame.grid(row = 0, column = 0)
 
+nameLabel = ttk.Label(submitLabelsFrame, text = 'Name:')
+emailLabel = ttk.Label(submitLabelsFrame, text = 'Email:')
+commentsLabel = ttk.Label(submitLabelsFrame, text = 'Comments')
+
+nameLabel.pack()
+emailLabel.pack()
+commentsLabel.pack()
+
 # submit fields
 submitFieldsFrame = Frame(submitFrame)
 submitFieldsFrame.grid(row = 0, column = 1)
+
+nameField = ttk.Entry(submitFieldsFrame, width = 30)
+nameField.pack()
+
+emailField = ttk.Entry(submitFieldsFrame, width = 30)
+emailField.pack()
+
+commentsFieldFrame = Frame(submitFieldsFrame)
+commentsField = Text(commentsFieldFrame,
+					 width = 40,
+					 height = 10,
+					 relief = RIDGE,
+					 wrap = 'word'
+					 )
+yscroll = ttk.Scrollbar(commentsFieldFrame,
+						orient = VERTICAL,
+						command = commentsField.yview)
+# synch scrollbar to contents of text field
+commentsField.configure(yscrollcommand = yscroll.set)
+
+commentsFieldFrame.pack()
+commentsField.grid(row = 0, column = 0)
+yscroll.grid(row = 0, column = 1, sticky = 'ns')
+
+
+
+
 
 # submit buttons ---------------------------
 # submitButton.pack()
