@@ -59,22 +59,26 @@ logoLabel.configure(image = logo, border = 0)
 logoLabel.pack()
 
 # title section of banner
-exploreLabel = ttk.Label(titleFrame, text = 'EXPLORE',
-						 background = '#5DBCD2',
-						 foreground = '#723724',
-						 border = 0,
-						 width = 40,
-						 font = ('Arial Bold', 18)
-						 )
+exploreLabel = ttk.Label(
+	titleFrame,
+	text = 'EXPLORE',
+	background = '#5DBCD2',
+	foreground = '#723724',
+	border = 0,
+	width = 40,
+	font = ('Arial Bold', 18)
+	)
 exploreLabel.pack()
 
-caliLabel = ttk.Label(titleFrame, text = 'CALIFORNIA',
-					  background = '#723724',
-					  foreground = '#FFFFFF',
-					  border = 0,
-					  width = 40,
-					  font = ('Arial Bold', 18)
-					  )
+caliLabel = ttk.Label(
+	titleFrame,
+	text = 'CALIFORNIA',
+	background = '#723724',
+	foreground = '#FFFFFF',
+	border = 0,
+	width = 40,
+	font = ('Arial Bold', 18)
+	)
 caliLabel.pack()
 
 # request for feedback ---------------------
@@ -82,11 +86,12 @@ thanksFrame = Frame(root)
 thanksFrame.pack()
 
 thanksStr = '\n' + getThanksStr()
-thanksLabel = ttk.Label(thanksFrame,
-						text = thanksStr,
-						font = ('Arial', 12),
-						foreground = '#723724',
-						wraplength = 600)
+thanksLabel = ttk.Label(
+	thanksFrame,
+	text = thanksStr,
+	font = ('Arial', 12),
+	foreground = '#723724',
+	wraplength = 600)
 thanksLabel.pack()
 
 # submit form ------------------------------
@@ -96,15 +101,19 @@ submitForm.pack()
 
 # name frame
 nameFrame = Frame(submitForm, pady = 10)
-nameLabel = ttk.Label(nameFrame,
-					  text = 'Name:     ',
-					  width = 10,
-					  foreground = '#723724',
-					  anchor = E)
-nameField = ttk.Entry(nameFrame,
-					  width = 30,
-					  foreground = '#6A564A'
-					  )
+
+nameLabel = ttk.Label(
+	nameFrame,
+	text = 'Name:     ',
+	width = 10,
+	foreground = '#723724',
+	anchor = E)
+
+nameField = ttk.Entry(
+	nameFrame,
+	width = 30,
+	foreground = '#6A564A'
+	)
 
 nameFrame.pack()
 nameLabel.grid(row = 0, column = 0)
@@ -112,36 +121,45 @@ nameField.grid(row = 0, column = 1)
 
 # email frame
 emailFrame = Frame(submitForm, pady = 10)
-emailLabel = ttk.Label(emailFrame,
-					   text = 'Email:    ',
-					   width = 10,
-					   foreground = '#723724',
-					   anchor = E)
-emailField = ttk.Entry(emailFrame,
-					   width = 30,
-					   foreground = '#6A564A',
-					   )
 
+emailLabel = ttk.Label(
+	emailFrame,
+	text = 'Email:    ',
+	width = 10,
+	foreground = '#723724',
+	anchor = E)
+
+emailField = ttk.Entry(
+	emailFrame,
+	width = 30,
+	foreground = '#6A564A',
+	)
 emailFrame.pack()
+
 emailLabel.grid(row = 0, column = 0)
 emailField.grid(row = 0, column = 1)
 
 # comments frame
 commentsFrame = Frame(submitForm, pady = 10)
-commentsLabel = ttk.Label(commentsFrame,
-						  text = 'Feedback: ',
-						  width = 20,
-						  foreground = '#723724',
-						  anchor = NE)
+
+commentsLabel = ttk.Label(
+	commentsFrame,
+	text = 'Feedback: ',
+	width = 20,
+	foreground = '#723724',
+	anchor = NE)
+
 commentsFieldFrame = Frame(commentsFrame)
-commentsField = Text(commentsFieldFrame,
-					 width = 40,
-					 height = 5,
-					 relief = SUNKEN,
-					 wrap = 'word',
-					 background = '#FAEFDD',
-					 foreground = '#6A564A'
-					 )
+
+commentsField = Text(
+	commentsFieldFrame,
+	width = 40,
+	height = 5,
+	relief = SUNKEN,
+	wrap = 'word',
+	background = '#FAEFDD',
+	foreground = '#6A564A'
+	)
 
 commentsFrame.pack()
 commentsLabel.grid(row = 0, column = 0)
@@ -150,9 +168,12 @@ commentsField.grid(row = 0, column = 0)
 
 # scroll bar
 # add scroll bar to commentsField
-yscroll = ttk.Scrollbar(commentsFieldFrame,
-						orient = VERTICAL,
-						command = commentsField.yview)
+yscroll = ttk.Scrollbar(
+	commentsFieldFrame,
+	orient = VERTICAL,
+	command = commentsField.yview
+	)
+
 yscroll.grid(row = 0, column = 1, sticky = 'ns')
 
 # synch scrollbar to text field
