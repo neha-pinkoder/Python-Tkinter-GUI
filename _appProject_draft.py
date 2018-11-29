@@ -1,36 +1,39 @@
 # _appProject.py
 # for requirements, see requirements.txt
+
 # imports ===========================================
 from tkinter import *
 from tkinter import ttk
 
-# globals ===========================================
-
-# classes ===========================================
-		
-	
 # functions =========================================
+# print contents of submit form to the console
 def printToConsole():
-	# print contents of input fields to the console
-	print('printToConsole()')
+	nameStr = nameField.get()
+	emailStr = emailField.get()
+	feedbackStr = commentsField.get('1.0', 'end')
+	print('Name: ', nameStr)
+	print('Email: ', emailStr)
+	print('Feedback: ', feedbackStr)
 	
+# clear the submit form 
 def clearFields():
-	# empty the input fields
-	print('clearFields()')
-
+	commentsField.delete('1.0', 'end')
+	nameField.delete(0, END)
+	emailField.delete(0, END)
+	
+# provide user with popup confirmation that form was submitted	
 def confirmSubmission():
 	# popup window confirming that form was submitted
-	print('confirmSubmission()')
+	
+# when submit button is clicked, clear all fields, confirm
+# submission, and print contents of submission form to console
+def submitInfo():
+	printToConsole()
+	clearFields()
+	#confirmSubmission()
 
-def submitForm():
-	# printToConsole()
-	# clearFields()
-	# confirmSubmission()
-	print('submitForm()')
-
+# read 'thanks' text from file and return it to calling function	
 def getThanksStr():
-	# read the thanks text from external file and return it
-	# to the calling function
 	infile = open('thanks.txt', 'r')
 	textStr = infile.read().strip()
 	infile.close()
@@ -40,7 +43,7 @@ def getThanksStr():
 # create feedback-form window
 root = Tk()
 root.title('Feedback Form')
-root.geometry('640x520')
+root.geometry('640x480')
 
 # banner -----------------------------------
 bannerFrame = Frame(root, height = 75)
@@ -181,10 +184,20 @@ commentsField.configure(yscrollcommand = yscroll.set)
 
 # buttons frame
 buttonsFrame = Frame(submitForm, pady = 20)
-submitButton = ttk.Button(buttonsFrame, text = 'Submit')
-clearButton = ttk.Button(buttonsFrame, text = 'Clear')
-
 buttonsFrame.pack()
+
+submitButton = ttk.Button(
+	buttonsFrame,
+	text = 'Submit',
+	command = submitInfo
+	)
+
+clearButton = ttk.Button(
+	buttonsFrame,
+	text = 'Clear',
+	command = clearFields
+	)
+
 submitButton.grid(row = 1, column = 0)
 clearButton.grid(row = 1, column = 1)
 
