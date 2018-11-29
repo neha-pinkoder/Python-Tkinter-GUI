@@ -40,11 +40,9 @@ def getThanksStr():
 # create feedback-form window
 root = Tk()
 root.title('Feedback Form')
-root.geometry('640x480')
+root.geometry('640x520')
 
 # banner -----------------------------------
-# 
-# PhotoImage-->logo.grid(0, 1)  |  label-->title.grid (0, 2)
 bannerFrame = Frame(root, height = 75)
 bannerFrame.pack()
 
@@ -80,8 +78,6 @@ caliLabel = ttk.Label(titleFrame, text = 'CALIFORNIA',
 caliLabel.pack()
 
 # request for feedback ---------------------
-# 
-# label-->label.pack() (text = 'we appreciate you, please submit feedback')
 thanksFrame = Frame(root)
 thanksFrame.pack()
 
@@ -94,58 +90,82 @@ thanksLabel = ttk.Label(thanksFrame,
 thanksLabel.pack()
 
 # submit form ------------------------------
-# labelFrame.grid( name, email, comment)  |  inputFrame.grid(textBox, textBox, entryField)
 # submit frame
-submitFrame = Frame(root)
-submitFrame.pack()
+submitForm = Frame(root, pady = 20)
+submitForm.pack()
 
-# submit labels
-submitLabelsFrame = Frame(submitFrame)
-submitLabelsFrame.grid(row = 0, column = 0)
+# name frame
+nameFrame = Frame(submitForm, pady = 10)
+nameLabel = ttk.Label(nameFrame,
+					  text = 'Name:     ',
+					  width = 10,
+					  foreground = '#723724',
+					  anchor = E)
+nameField = ttk.Entry(nameFrame,
+					  width = 30,
+					  foreground = '#6A564A'
+					  )
 
-nameLabel = ttk.Label(submitLabelsFrame, text = 'Name:')
-emailLabel = ttk.Label(submitLabelsFrame, text = 'Email:')
-commentsLabel = ttk.Label(submitLabelsFrame, text = 'Comments')
+nameFrame.pack()
+nameLabel.grid(row = 0, column = 0)
+nameField.grid(row = 0, column = 1)
 
-nameLabel.pack()
-emailLabel.pack()
-commentsLabel.pack()
+# email frame
+emailFrame = Frame(submitForm, pady = 10)
+emailLabel = ttk.Label(emailFrame,
+					   text = 'Email:    ',
+					   width = 10,
+					   foreground = '#723724',
+					   anchor = E)
+emailField = ttk.Entry(emailFrame,
+					   width = 30,
+					   foreground = '#6A564A',
+					   )
 
-# submit fields
-submitFieldsFrame = Frame(submitFrame)
-submitFieldsFrame.grid(row = 0, column = 1)
+emailFrame.pack()
+emailLabel.grid(row = 0, column = 0)
+emailField.grid(row = 0, column = 1)
 
-nameField = ttk.Entry(submitFieldsFrame, width = 30)
-nameField.pack()
-
-emailField = ttk.Entry(submitFieldsFrame, width = 30)
-emailField.pack()
-
-commentsFieldFrame = Frame(submitFieldsFrame)
+# comments frame
+commentsFrame = Frame(submitForm, pady = 10)
+commentsLabel = ttk.Label(commentsFrame,
+						  text = 'Feedback: ',
+						  width = 20,
+						  foreground = '#723724',
+						  anchor = NE)
+commentsFieldFrame = Frame(commentsFrame)
 commentsField = Text(commentsFieldFrame,
 					 width = 40,
-					 height = 10,
-					 relief = RIDGE,
-					 wrap = 'word'
+					 height = 5,
+					 relief = SUNKEN,
+					 wrap = 'word',
+					 background = '#FAEFDD',
+					 foreground = '#6A564A'
 					 )
+
+commentsFrame.pack()
+commentsLabel.grid(row = 0, column = 0)
+commentsFieldFrame.grid(row = 0, column = 1)
+commentsField.grid(row = 0, column = 0)
+
+# scroll bar
+# add scroll bar to commentsField
 yscroll = ttk.Scrollbar(commentsFieldFrame,
 						orient = VERTICAL,
 						command = commentsField.yview)
-# synch scrollbar to contents of text field
-commentsField.configure(yscrollcommand = yscroll.set)
-
-commentsFieldFrame.pack()
-commentsField.grid(row = 0, column = 0)
 yscroll.grid(row = 0, column = 1, sticky = 'ns')
 
+# synch scrollbar to text field
+commentsField.configure(yscrollcommand = yscroll.set) 
 
+# buttons frame
+buttonsFrame = Frame(submitForm, pady = 20)
+submitButton = ttk.Button(buttonsFrame, text = 'Submit')
+clearButton = ttk.Button(buttonsFrame, text = 'Clear')
 
-
-
-# submit buttons ---------------------------
-# submitButton.pack()
-# clearButton.pack()
-
+buttonsFrame.pack()
+submitButton.grid(row = 1, column = 0)
+clearButton.grid(row = 1, column = 1)
 
 # ttk main loop
 root.mainloop()
