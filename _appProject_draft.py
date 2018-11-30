@@ -4,41 +4,8 @@
 # imports ===========================================
 from tkinter import *
 from tkinter import ttk
+import functions
 
-# functions =========================================
-# print contents of submit form to the console
-def printToConsole():
-	nameStr = nameField.get()
-	emailStr = emailField.get()
-	feedbackStr = commentsField.get('1.0', 'end')
-	print('Name: ', nameStr)
-	print('Email: ', emailStr)
-	print('Feedback: ', feedbackStr)
-	
-# clear the submit form 
-def clearFields():
-	commentsField.delete('1.0', 'end')
-	nameField.delete(0, END)
-	emailField.delete(0, END)
-	
-# provide user with popup confirmation that form was submitted	
-def confirmSubmission():
-	# popup window confirming that form was submitted
-	
-# when submit button is clicked, clear all fields, confirm
-# submission, and print contents of submission form to console
-def submitInfo():
-	printToConsole()
-	clearFields()
-	#confirmSubmission()
-
-# read 'thanks' text from file and return it to calling function	
-def getThanksStr():
-	infile = open('thanks.txt', 'r')
-	textStr = infile.read().strip()
-	infile.close()
-	return textStr
-	
 # tkinter ===========================================
 # create feedback-form window
 root = Tk()
@@ -88,7 +55,7 @@ caliLabel.pack()
 thanksFrame = Frame(root)
 thanksFrame.pack()
 
-thanksStr = '\n' + getThanksStr()
+thanksStr = '\n' + functions.getThanksStr()
 thanksLabel = ttk.Label(
 	thanksFrame,
 	text = thanksStr,
@@ -189,13 +156,14 @@ buttonsFrame.pack()
 submitButton = ttk.Button(
 	buttonsFrame,
 	text = 'Submit',
-	command = submitInfo
+	command = functions.submitInfo
 	)
 
 clearButton = ttk.Button(
 	buttonsFrame,
 	text = 'Clear',
-	command = clearFields
+	#command = lambda: nameField.delete(0,END)
+	command = lambda: functions.clearFields(nameField, emailField, commentsField)
 	)
 
 submitButton.grid(row = 1, column = 0)
