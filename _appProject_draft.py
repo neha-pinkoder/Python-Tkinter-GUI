@@ -4,7 +4,6 @@
 # imports ===========================================
 from tkinter import *
 from tkinter import ttk
-import functions
 
 # functions =========================================
 # print contents of submit form to the console
@@ -17,19 +16,11 @@ def printToConsole():
 	print('Feedback: ', feedbackStr)
 	
 # clear the submit form
-'''
 def clearFields():
 	commentsField.delete('1.0', 'end')
 	nameField.delete(0, END)
 	emailField.delete(0, END)
-'''
-def clearFields(*args): # (nameField, emailField, commentsField)
-	name = args[0]
-	name.insert(0, '')
-	#args[0].delete(0, END)
-	#args[1].delete(0, END)
-	#args[2].delete('1.0', 'end')
-		
+
 # provide user with popup confirmation that form was submitted	
 def confirmSubmission():
 	print('confirmSubmission()')
@@ -97,7 +88,7 @@ caliLabel.pack()
 thanksFrame = Frame(root)
 thanksFrame.pack()
 
-thanksStr = '\n' + functions.getThanksStr()
+thanksStr = '\n' + getThanksStr()
 thanksLabel = ttk.Label(
 	thanksFrame,
 	text = thanksStr,
@@ -198,14 +189,14 @@ buttonsFrame.pack()
 submitButton = ttk.Button(
 	buttonsFrame,
 	text = 'Submit',
-	command = functions.submitInfo
+	command = submitInfo
 	)
 
 clearButton = ttk.Button(
 	buttonsFrame,
 	text = 'Clear',
 	#command = lambda: nameField.delete(0,END)
-	command = lambda: functions.clearFields(nameField, emailField, commentsField)
+	command = clearFields
 	)
 
 submitButton.grid(row = 1, column = 0)
