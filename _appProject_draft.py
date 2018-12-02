@@ -4,6 +4,7 @@
 # imports ===========================================
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 # functions =========================================
 # print contents of submit form to the console
@@ -23,14 +24,13 @@ def clearFields():
 
 # provide user with popup confirmation that form was submitted	
 def confirmSubmission():
-	print('confirmSubmission()')
-	# popup window confirming that form was submitted
+	messagebox.showinfo(title = 'Success!', message = 'Thanks! Your form has been submitted!')
 	
 # clear submit form, confirm submission, and print contents to console
 def submitInfo():
 	printToConsole()
 	clearFields()
-	#confirmSubmission()
+	confirmSubmission()
 
 # read 'thanks' text from external file and return to caller
 def getThanksStr():
