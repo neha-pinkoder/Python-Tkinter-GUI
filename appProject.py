@@ -1,6 +1,42 @@
-# _appProject.py
+# appProject.py
 # for requirements, see requirements.txt
 
+'''
+# frame widgets
+bannerFrame
+logoFrame
+titleFrame
+thanksFrame
+submitForm
+nameFrame
+emailFrame
+commentsFrame
+commentsFieldFrame
+buttonsFrame
+
+# label widgets
+logoLabel
+exploreLabel
+caliLabel
+thanksLabel
+nameLabel
+emailLabel
+commentsLabel
+
+# entry widgets
+nameField
+emailField
+
+# text widget
+commentsField
+
+# pics, strings, scrollbars, buttons
+logo
+thanksStr
+yscroll
+submitButton
+clearButton
+'''
 # imports ===========================================
 from tkinter import *
 from tkinter import ttk
