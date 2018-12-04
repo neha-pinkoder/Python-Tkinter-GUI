@@ -1,13 +1,4 @@
-# appProject_vClass_v3.py
-
-# this file contains the second version of appProject.py
-# with all aspects of the GUI implemented as a class
-
-# v2
-# added class functions
-
-# v3
-# added configurations and geometry management
+# appProject_fin.py
 
 # imports ===========================================
 from tkinter import *
@@ -29,7 +20,7 @@ class FeedbackForm:
 		self.emailFrame = Frame(self.submitForm)
 		self.commentsFrame = Frame(self.submitForm)
 		self.commentsFieldFrame = ttk.Frame(self.commentsFrame)
-		self.buttonsFrame = ttk.Frame(self.submitForm)
+		self.buttonsFrame = Frame(self.submitForm)
 		
 		# label widgets
 		self.logoLabel = ttk.Label(self.logoFrame)
@@ -49,13 +40,13 @@ class FeedbackForm:
 		
 		# pics, strings, scrollbars, buttons
 		self.logo = PhotoImage(file = 'tour_logo.gif')
-		self.thanksStr = '\n' #+ self.getThanksStr()
+		self.thanksStr = '\n' + self.getThanksStr()
 		self.yscroll = ttk.Scrollbar(self.commentsFieldFrame)
 		self.submitButton = ttk.Button(self.buttonsFrame)
 		self.clearButton = ttk.Button(self.buttonsFrame)
 		
 		# configure widgets -----------------------------
-		# frame widgets
+		# frame widgets config
 		self.bannerFrame.configure(height = 75)
 		self.logoFrame
 		self.titleFrame
@@ -65,9 +56,9 @@ class FeedbackForm:
 		self.emailFrame.configure(pady = 10)
 		self.commentsFrame.configure(pady = 10)
 		self.commentsFieldFrame
-		self.buttonsFrame
+		self.buttonsFrame.config(pady = 20)
 		
-		# label widgets
+		# label widgets config
 		self.logoLabel.configure(image = self.logo, border = 0)
 		self.exploreLabel.configure(
 			text = 'EXPLORE',
@@ -110,7 +101,7 @@ class FeedbackForm:
 			anchor = NE
 		)
 
-		# entry widgets
+		# entry widgets config
 		self.nameField.configure(
 			width = 30,
 			foreground = '#6A564A'
@@ -120,22 +111,32 @@ class FeedbackForm:
 			foreground = '#6A564A'
 		)
 		
-		# text widgets
+		# text widgets config
 		self.commentsField.configure(
 			width = 40,
 			height = 5,
 			relief = SUNKEN,
 			wrap = 'word',
 			background = '#FAEFDD',
-			foreground = '#6A564A'
+			foreground = '#6A564A',
+			yscrollcommand = self.yscroll.set
 		)
 		
-		# pics, strings, scrollbars, buttons
+		# pics, strings, scrollbars, buttons config
 		self.logo
 		self.thanksStr
-		self.yscroll
-		self.submitButton
-		self.clearButton
+		self.yscroll.config(
+			orient = VERTICAL,
+			command = self.commentsField.yview			
+		)
+		self.submitButton.config(
+			text = 'Submit',
+			command = self.submitInfo
+		)
+		self.clearButton.config(
+			text = 'Clear',
+			command = self.clearFields
+		)
 		
 		# geometry management ---------------------------
 		self.bannerFrame.pack()
@@ -157,6 +158,10 @@ class FeedbackForm:
 		self.commentsLabel.grid(row = 0, column = 0)
 		self.commentsFieldFrame.grid(row = 0, column = 1)
 		self.commentsField.grid(row = 0, column = 0)
+		self.yscroll.grid(row = 0, column = 1, sticky = 'ns')
+		self.buttonsFrame.pack()
+		self.submitButton.grid(row = 1, column = 0)
+		self.clearButton.grid(row = 1, column = 1)
 		
 	# class methods ---------------------------------
 	# print contents of submit form to the console
