@@ -1,4 +1,5 @@
 # appProject_fin.py
+# this final version ports the _noClass version into a Python Class implementation
 # for requirements, see requirements.txt
 
 # imports ===========================================
@@ -182,8 +183,10 @@ class FeedbackForm:
 		
 	# provide user with popup confirmation that form was submitted
 	def confirmSubmission(self):
-		messagebox.showinfo(title = 'Success!',
-							message = 'Thanks! Your form has been submitted!')
+		messagebox.showinfo(
+			title = 'Success!',
+			message = 'Thanks! Your form has been submitted!'
+		)
 		
 	# clear submit form, confirm submission, and print contents to console
 	def submitInfo(self):

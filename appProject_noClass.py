@@ -1,4 +1,6 @@
 # appProject_noClass.py
+# this initial _noClass version sets up the GUI components and functions, while
+# the _fin version will port this GUI into a Python Class implementation
 # for requirements, see requirements.txt
 
 # imports ===========================================
