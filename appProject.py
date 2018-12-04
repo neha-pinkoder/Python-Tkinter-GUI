@@ -8,7 +8,6 @@ from tkinter import messagebox
 
 # functions =========================================
 # print contents of submit form to the console
-'''
 def printToConsole():
 	nameStr = nameField.get()
 	emailStr = emailField.get()
@@ -22,7 +21,7 @@ def clearFields():
 	commentsField.delete('1.0', 'end')
 	nameField.delete(0, END)
 	emailField.delete(0, END)
-'''
+
 # provide user with popup confirmation that form was submitted	
 def confirmSubmission():
 	messagebox.showinfo(title = 'Success!', message = 'Thanks! Your form has been submitted!')
