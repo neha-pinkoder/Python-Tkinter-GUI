@@ -1,4 +1,5 @@
 # appProject_fin.py
+# for requirements, see requirements.txt
 
 # imports ===========================================
 from tkinter import *
