@@ -1,2 +1,2 @@
 # tkinter-form-gui
-A submission-form app that uses Python's Tkinter GUI toolkit.
+A submission-form GUI written for Explore California (<explorecalifornia.org>) using Python's Tkinter GUI toolkit. 
